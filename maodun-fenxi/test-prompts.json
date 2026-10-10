@@ -1,0 +1,51 @@
+{
+  "skill": "maodun-fenxi",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们公司现在问题太多了，产品有bug、销售在下滑、技术债越积越多、核心员工在离职，每个都很重要，真的不知道从哪里下手",
+      "expected_behavior": "应激活 maodun-fenxi, 并引导用户列举所有矛盾、逐一分析因果关系、找到牵一发而动全身的主要矛盾",
+      "notes": "正面场景：多问题并发、决策瘫痪，用户明确表达'问题太多不知道从哪下手'"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "团队在战略方向上各执一词，有人说做ToB，有人说做ToC，有人说先做留存，有人说先做获客，大家都有道理但意见不统一",
+      "expected_behavior": "应激活 maodun-fenxi, 并帮助用户识别不同方向背后的矛盾关系，找到制约全局的主要矛盾",
+      "notes": "正面场景：争论不休、方向不明，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "以前我们的增长方法很管用，但最近半年增长曲线变平了，感觉到了瓶颈期，表面数据还可以但总觉得哪里不对",
+      "expected_behavior": "应激活 maodun-fenxi, 并帮助用户判断当前阶段的主要矛盾是否已经发生了转化",
+      "notes": "正面场景：阶段转换、策略失灵，匹配A2段场景3和场景5"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们产品的支付功能有一个bug需要尽快修复，用户反馈支付成功但订单状态没更新",
+      "expected_behavior": "不应激活本 skill, 因为这是一个明确的单一技术问题，只需直接执行修复，不需要矛盾分析法",
+      "notes": "诱饵：看似是'问题'但其实是明确的单一执行任务，不涉及方向判断和资源分配"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我团队里两个工程师在代码风格上吵起来了，一个喜欢用tabs一个喜欢用spaces，我该怎么调解",
+      "expected_behavior": "不应激活本 skill, 因为这是人际冲突而非战略层面的多矛盾交织，不涉及方向判断和资源分配",
+      "notes": "诱饵：看起来是'矛盾'但实际上是低层次的个人偏好冲突，不是A2段定义的矛盾类型"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们同时面临三个问题：获客成本上升、客户留存率下降、新功能开发延期。资源有限，需要决定先解决哪个",
+      "expected_behavior": "可以激活 maodun-fenxi 帮助分析三个问题之间的因果链，但也可能用集中优势兵力skill来直接选一个突破，取决于是否需要先做系统性分析",
+      "notes": "边界：问题数量中等（3个），有资源限制需要取舍，但可能不需要完整的矛盾分析框架，直接用优先级排序也能解决"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

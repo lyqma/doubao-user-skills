@@ -1,0 +1,51 @@
+{
+  "skill": "fangxia-baofu-kaidong-jiqi",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我上次创业就是这么成功的，这个我懂不用再研究了，行业规律就是这样的",
+      "expected_behavior": "应激活 fangxia-baofu-kaidong-jiqi, 并帮助用户识别'成功经验'这一最隐蔽的认知包袱，建议做零基思考",
+      "notes": "正面场景：连续创业者复制旧打法，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们融资成功了，不需要那么拼了，这次肯定没问题我们团队这么强",
+      "expected_behavior": "应激活 fangxia-baofu-kaidong-jiqi, 并警示融资成功后的'功臣心态'是最危险的认知包袱",
+      "notes": "正面场景：融资成功后团队进入功臣心态，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我在这个行业干了20年了，这还用想吗，年轻人的想法太天真了",
+      "expected_behavior": "应激活 fangxia-baofu-kaidong-jiqi, 并指出行业资历可能正是最大的认知包袱，需要'开动机器'重新审视",
+      "notes": "正面场景：行业老将按老经验决策，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司现金流只够一个月了，需要立刻做出裁员决策，刻不容缓",
+      "expected_behavior": "不应激活本 skill, 因为这是紧急危机时刻，没有时间清空包袱和深度思考",
+      "notes": "诱饵：提到'决策'，但属于B段边界场景1——紧急危机不能慢慢反思"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们新招了几个应届生，他们在熟悉公司流程，有什么方法可以帮他们更快上手",
+      "expected_behavior": "不应激活本 skill, 因为新人还没有积累出'包袱'，让他们'放下包袱'缺乏对象",
+      "notes": "诱饵：提到'新人'和'方法'，但属于B段边界场景3——团队新手阶段"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们团队在快速变化的市场中决策变慢了，每次有人提议新方案大家都会说'我们以前的流程不是这样的'",
+      "expected_behavior": "可以激活 fangxia-baofu-kaidong-jiqi 帮助排查团队被过往流程拖住了思考，但也可能是主动性灵活性计划性skill中的灵活性不足问题",
+      "notes": "边界：决策变慢可能是因为认知包袱（本skill），也可能是因为流程僵化缺乏灵活性（另一个skill）"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

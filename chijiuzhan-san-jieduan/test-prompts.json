@@ -1,0 +1,51 @@
+{
+  "skill": "chijiuzhan-san-jieduan",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "腾讯也要做我们这个赛道了，他们有钱有人，我们怎么打？是不是该转型了",
+      "expected_behavior": "应激活 chijiuzhan-san-jieduan, 并帮助用户用三阶段模型分析当前所处阶段，制定对应的持久战策略",
+      "notes": "正面场景：巨头入场、资源极度劣势，匹配A2段场景1和2"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "和竞品打了一年还在拉锯，看不到终局，这样下去谁先死都不知道，什么时候能翻盘",
+      "expected_behavior": "应激活 chijiuzhan-san-jieduan, 并帮助用户判断是处于相持期，制定深耕细分领域的策略",
+      "notes": "正面场景：陷入消耗战，匹配A2段场景3"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "最近两个季度形势好转了一点，机会来了，我觉得可以正面对抗了，全力进攻吧",
+      "expected_behavior": "应激活 chijiuzhan-san-jieduan, 并警惕用户可能处于速胜论冲动，帮助判断是否真的进入了反攻期",
+      "notes": "正面场景：急于一搏的冲动，匹配A2段场景5，防止速胜论错误"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们的产品在细分市场已经是第一名了，现在要考虑怎么进一步扩大优势",
+      "expected_behavior": "不应激活本 skill, 因为自身已占优，三阶段模型是为'以弱对强'设计的",
+      "notes": "诱饵：提到'竞争'和'扩张'，但自身已占优，属于B段边界场景1"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们团队内部在讨论新产品要不要用React还是Vue，需要做一个技术选型决策",
+      "expected_behavior": "不应激活本 skill, 因为这是内部技术选型的非竞争性决策，不涉及以弱对强的竞争",
+      "notes": "诱饵：涉及'决策'和'竞争'（技术选型），但不是竞争性场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们和竞品实力差不多，各有所长，但最近对手拿到了一笔大融资，可能会拉开差距",
+      "expected_behavior": "可以激活 chijiuzhan-san-jieduan 帮助分析对手融资后力量对比的变化，但也可能还不需要三阶段模型因为差距尚未形成，取决于对手融资后是否确实形成碾压优势",
+      "notes": "边界：双方实力相当但力量对比即将变化，处于'需要三阶段'和'不需要'的临界点"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

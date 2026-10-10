@@ -1,0 +1,10 @@
+{
+  "id": "hall_xieshan_5bay",
+  "name": "清式单檐歇山殿 面阔五间",
+  "category": "殿",
+  "subtype": "单檐歇山",
+  "bays_width": 5,
+  "bay_spacing": 3600,
+  "depth_bays": 3,
+  "mode": "quick_shell"
+}

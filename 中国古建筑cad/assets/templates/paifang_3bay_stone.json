@@ -1,0 +1,13 @@
+{
+  "id": "paifang_3bay_stone",
+  "name": "清式三间石牌坊",
+  "category": "坊",
+  "subtype": "三间石牌楼",
+  "W": 10800,
+  "bays": 3,
+  "bay_spacing": [3600, 3600, 3600],
+  "depth": 2400,
+  "column_style": "straight",
+  "roof_type": "xieshan",
+  "material": "stone"
+}

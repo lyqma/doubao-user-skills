@@ -1,0 +1,51 @@
+{
+  "skill": "buduicheng-zhanlue",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "大公司来了我们怎么办，他们什么都比我们强，资金、品牌、团队都碾压我们，没法正面竞争",
+      "expected_behavior": "应激活 buduicheng-zhanlue, 并帮助用户找到弱中带强的非对称优势，设计不对称竞争范式",
+      "notes": "正面场景：巨头挤压、资源劣势处处被动，匹配A2段场景1和2"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们的创新功能被大厂全抄了，而且他们做得更快更便宜，我们还有什么优势",
+      "expected_behavior": "应激活 buduicheng-zhanlue, 并帮助用户从'被复制'的困境中找到结构性优势（如深度、速度、用户关系）",
+      "notes": "正面场景：被复制被跟随，匹配A2段场景3"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "竞争规则是他们定的，比价格、比渠道、比品牌我们都打不过，我们太小了怎么玩都输",
+      "expected_behavior": "应激活 buduicheng-zhanlue, 并帮助用户重新定义竞争维度，找到对手不擅长的新战场",
+      "notes": "正面场景：行业规则由强者制定，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们在细分市场占有率已经超过60%了，现在需要考虑怎么防御其他竞争者的挑战",
+      "expected_behavior": "不应激活本 skill, 因为自身已占优，不对称战略是弱者的选择",
+      "notes": "诱饵：提到'竞争'和'挑战'，但自身处于优势地位，不属于弱者面对强者的场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们在考虑要不要进入一个全新的蓝海市场，目前还没有任何竞争对手",
+      "expected_behavior": "不应激活本 skill, 因为没有明确对手，不对称战略的前提不存在",
+      "notes": "诱饵：提到'战略'和'市场'，但没有竞争者，属于蓝海场景"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们和主要对手实力差不多，但在品牌知名度上明显落后，其他方面各有千秋",
+      "expected_behavior": "可以部分激活 buduicheng-zhanlue 帮助在品牌维度上寻找不对称打法，但整体上不是典型的弱者面对强者，也可能用其他竞争策略",
+      "notes": "边界：双方实力大致相当但某一维度明显落后，是'局部不对称'还是'整体对称'的灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

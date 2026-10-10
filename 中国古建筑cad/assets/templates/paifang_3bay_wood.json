@@ -1,0 +1,14 @@
+{
+  "id": "paifang_3bay_wood",
+  "name": "清式三间木牌楼",
+  "category": "坊",
+  "subtype": "三间木牌楼",
+  "W": 9000,
+  "bays": 3,
+  "bay_spacing": [3000, 3000, 3000],
+  "depth": 3000,
+  "column_style": "straight",
+  "roof_type": "xieshan",
+  "material": "wood",
+  "double_eave": true
+}

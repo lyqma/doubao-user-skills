@@ -1,0 +1,51 @@
+{
+  "skill": "xingxingzhihuo-genjudi",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们产品做出来了，但不确定先打一线城市还是下沉市场，ToB还是ToC，垂直行业还是通用场景",
+      "expected_behavior": "应激活 xingxingzhihuo-genjudi, 并帮助用户找到边缘真空地带作为切入点，规划根据地建设路径",
+      "notes": "正面场景：早期选择切入点，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们尝试了很多方向但都没做透，每次看到新机会就想跟进，一年换了三个方向了",
+      "expected_behavior": "应激活 xingxingzhihuo-genjudi, 并指出这是'流寇主义'倾向，建议选定一个方向深耕建立根据地",
+      "notes": "正面场景：团队出现流寇倾向，匹配A2段场景3"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们这么小的团队能做大吗，市场已经被巨头占了，不知道从哪里突破",
+      "expected_behavior": "应激活 xingxingzhihuo-genjudi, 并用结构性分析帮用户找到巨头覆盖不到的真空地带",
+      "notes": "正面场景：从0到1的信心危机，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们已经是华东地区最大的SaaS供应商了，现在要考虑怎么进入华北市场",
+      "expected_behavior": "不应激活本 skill, 因为已有稳固基本盘，不是从0到1的弱小阶段",
+      "notes": "诱饵：提到'进入新市场'，但已有成熟基本盘，不属于弱小阶段的边缘突破"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们拿到了政府的一个补贴政策红利，只有三个月窗口期，要赶紧全面铺开",
+      "expected_behavior": "不应激活本 skill, 因为窗口期极短，来不及建根据地，属于B段边界场景1",
+      "notes": "诱饵：看起来是'扩张'，但时间窗口太短，不适合波浪式推进"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们在一个细分领域做了半年，有了一些客户但还没有形成绝对优势，要不要趁势扩张到相邻领域",
+      "expected_behavior": "可以激活 xingxingzhihuo-genjudi 帮助评估根据地是否足够稳固（4个标志达成了几个），如果不够则建议继续深耕，如果够了则可规划波浪式扩张",
+      "notes": "边界：根据地初步建成但不够稳固，处于'巩固'和'扩张'的决策临界点"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

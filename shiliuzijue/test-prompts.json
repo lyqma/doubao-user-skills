@@ -1,0 +1,51 @@
+{
+  "skill": "shiliuzijue",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "竞品来势汹汹进入我们的核心市场了，我们该不该正面迎战？要不要打价格战",
+      "expected_behavior": "应激活 shiliuzijue, 并诊断对手当前处于'进'的状态，建议用户采取'敌进我退'的收缩防守策略",
+      "notes": "正面场景：对手大举进入，匹配A2段场景1，需判断对手状态选择应对节奏"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "竞争对手最近没那么猛了，他们的服务质量开始下滑，客户开始抱怨他们了",
+      "expected_behavior": "应激活 shiliuzijue, 并诊断对手从'驻'向'疲'转化，建议用户抓住窗口期集中资源主动出击",
+      "notes": "正面场景：对手出现疲态，匹配A2段场景3，处于'敌疲我打'的时机"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "对手退出了XX市场和这个产品线，他们不再做这个方向了",
+      "expected_behavior": "应激活 shiliuzijue, 并诊断对手处于'退'的状态，建议用户趁势快速扩张填补市场空白",
+      "notes": "正面场景：对手主动收缩，匹配A2段场景4，处于'敌退我追'的时机"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们正在开发一个全新的产品品类，市场上目前没有任何类似产品",
+      "expected_behavior": "不应激活本 skill, 因为没有明确对手，十六字诀无用武之地",
+      "notes": "诱饵：提到'市场'和'产品'，但属于蓝海市场，不存在对手状态判断"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们已经是行业第一了，现在需要规划下一年的产品路线图",
+      "expected_behavior": "不应激活本 skill, 因为处于绝对优势地位，不需要跟着对手节奏走",
+      "notes": "诱饵：提到'规划'和'竞争'暗示，但自身已领先，应用自己的节奏主导市场"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们的主要对手最近营销投放减少了一半，但不确定是预算问题还是策略调整，有可能是在蓄力准备大动作",
+      "expected_behavior": "可以激活 shiliuzijue 提醒用户注意'退→进'的假信号风险，需要多维度交叉验证对手真实状态，不宜贸然判断为'退'而全面扩张",
+      "notes": "边界：对手信号模糊，可能是'退'也可能是蓄力假信号，十六字诀的前提（可判断对手状态）不充分"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

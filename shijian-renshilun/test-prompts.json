@@ -1,0 +1,51 @@
+{
+  "skill": "shijian-renshilun",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我还需要更多数据才能决定要不要进入这个市场，先做个完整的市场分析再说，不研究清楚不敢动手",
+      "expected_behavior": "应激活 shijian-renshilun, 并帮助用户认识到过度准备的陷阱，设计最小可行实践获取第一批感性认识",
+      "notes": "正面场景：分析瘫痪/过度准备，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们团队一直在做但好像没有进步，每次都是同样的问题反复出现，忙但不知道在忙什么",
+      "expected_behavior": "应激活 shijian-renshilun, 并帮助用户建立'实践-认识-再实践'的循环，从感性认识提炼到理性认识",
+      "notes": "正面场景：盲目执行/不总结，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我对这个行业不了解不敢开始做，没有经验能做这个新业务吗",
+      "expected_behavior": "应激活 shijian-renshilun, 并鼓励用户'干起来再学习'，设计最小可行实践来获取第一手经验",
+      "notes": "正面场景：进入新领域，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们正在评估是否要收购一家公司，这次收购涉及2亿资金，需要做非常详尽的尽职调查",
+      "expected_behavior": "不应激活本 skill, 因为这是高风险一次性决策，不能'先试试再迭代'，属于B段边界场景1",
+      "notes": "诱饵：看起来是'分析瘫痪'但实际是正确的高风险决策准备，不应鼓励'先干再说'"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我想系统地学习一下Python编程的基础语法，你推荐哪些教程",
+      "expected_behavior": "不应激活本 skill, 因为编程基础语法是已有成熟方法论的领域，直接学习成熟方法比从零实践更高效",
+      "notes": "诱饵：提到'学习'和'实践'，但这是B段边界场景2提到的已有成熟方法论的标准化操作"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们产品做了五个版本了，每次改的都不一样但用户增长一直没突破，不知道该继续迭代还是推翻重来",
+      "expected_behavior": "可以激活 shijian-renshilun 帮助审视前五轮实践中有无真正提炼出理性认识，也可能需要矛盾分析法重新定位问题",
+      "notes": "边界：迭代停滞（A2场景5），可能是因为没有从实践中提炼认知，也可能是因为方向本身就错了"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

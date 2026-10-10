@@ -1,0 +1,51 @@
+{
+  "skill": "bianzheng-pingheng",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "要么增长要么盈利，不能兼得，烧钱就是找死不烧钱就是等死，不知道该怎么选",
+      "expected_behavior": "应激活 bianzheng-pingheng, 并帮助用户跳出零和思维，分析增长和盈利之间是否存在辩证统一的可能",
+      "notes": "正面场景：面临两难决策，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "团队里一派说只做ToB另一派说必须ToC，各执一端争得不可开交，无法形成统一方向",
+      "expected_behavior": "应激活 bianzheng-pingheng, 并帮助分析ToB和ToC是否真的是非此即彼，寻找辩证统一的可能",
+      "notes": "正面场景：两派意见各执一端，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们一直都是60%产品40%销售的投入比例，之前效果很好，但现在已经换了新的增长阶段",
+      "expected_behavior": "应激活 bianzheng-pingheng, 并指出动态平衡的关键是'动态'——阶段变了平衡点也要重新计算",
+      "notes": "正面场景：阶段变了但平衡策略没变，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司账上没钱了，要么今天就裁员要么下周就倒闭，没有别的选择",
+      "expected_behavior": "不应激活本 skill, 因为这是生死存亡时刻，不存在平衡，必须做明确选择",
+      "notes": "诱饵：提到'两难'和'选择'，但属于B段边界场景1——生死抉择不需要辩证平衡"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "预算只有100万，A项目需要80万B项目需要60万，只能选一个",
+      "expected_behavior": "不应激活本 skill, 因为这是已经极度明确的零和取舍场景，不存在辩证统一的可能",
+      "notes": "诱饵：提到'平衡'和'取舍'，但属于B段边界场景3——明确的零和博弈"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们在讨论要不要把一部分产品研发外包，既能降低成本又担心质量控制不住",
+      "expected_behavior": "可以激活 bianzheng-pingheng 分析成本和质量的辩证关系，但也可能是简单的商业决策——需要评估外包的具体风险而非抽象的辩证分析",
+      "notes": "边界：成本vs质量看似矛盾，但可能只是常规的商业权衡，未必需要完整的辩证平衡框架"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

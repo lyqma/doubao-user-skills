@@ -1,0 +1,51 @@
+{
+  "skill": "yiban-gebie-zhidao",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这个新的绩效考核制度下周一全公司执行，先推了再说有问题再调",
+      "expected_behavior": "应激活 yiban-gebie-zhidao, 并建议先选1-2个团队试点验证，取得经验后再全面推广",
+      "notes": "正面场景：新制度全公司一刀切推行，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "战略大家都知道了，发了邮件也开了大会，但各团队还是各做各的没人动",
+      "expected_behavior": "应激活 yiban-gebie-zhidao, 并指出只有一般号召没有个别指导的问题，建议领导亲自下场在某个团队验证",
+      "notes": "正面场景：战略方向有了但无法落地，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "文件发了制度定了，但没人真正在执行，上有政策下有对策",
+      "expected_behavior": "应激活 yiban-gebie-zhidao, 并诊断制度空转的原因——未经个别指导验证和充实的一般号召会归于落空",
+      "notes": "正面场景：制度空转，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们需要更新一下公司的财务报销流程，按照新的税法要求调整就行",
+      "expected_behavior": "不应激活本 skill, 因为这是简单的重复性操作更新，已有成熟标准，不需要试点",
+      "notes": "诱饵：提到'流程更新'和'推行'，但属于B段边界场景1——简单标准化操作"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "公司服务器突然宕机了，客户在投诉，需要立即修复恢复服务",
+      "expected_behavior": "不应激活本 skill, 因为这是紧急应对，没有时间试点验证",
+      "notes": "诱饵：提到'恢复'和'执行'，但属于紧急情况，事后复盘替代事前验证"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们在A团队试点了新的敏捷开发流程效果很好，但推广到B团队时效果打了折扣，B团队说水土不服",
+      "expected_behavior": "可以激活 yiban-gebie-zhidao 帮助分析试点经验的可复制性问题，但也可能是A团队选点偏差（选了最优秀的团队），需要重新选点试点",
+      "notes": "边界：试点成功了但推广失败，可能是选点问题也可能是经验反哺环节缺失"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

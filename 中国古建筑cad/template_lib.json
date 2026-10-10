@@ -1,0 +1,40 @@
+{
+  "template_library": [
+    {
+      "template_id": "cylinder_column",
+      "geo_type": "cylinder",
+      "param_def": ["height", "diameter"],
+      "geo_generator": {
+        "blender_bpy_template": "bpy.ops.mesh.primitive_cylinder(radius=diameter/2, depth=height, location=(pos_x,pos_y,pos_z))",
+        "cad_script_template": "CYLINDER pos_x,pos_y,pos_z, diameter/2, height"
+      }
+    },
+    {
+      "template_id": "beam_rect",
+      "geo_type": "box",
+      "param_def": ["length", "height", "thick"],
+      "geo_generator": {
+        "blender_bpy_template": "bpy.ops.mesh.primitive_cube(size=1, location=(pos_x,pos_y,pos_z));obj.scale=(length/2,thick/2,height/2)",
+        "cad_script_template": "BOX pos_x,pos_y,pos_z, length, thick, height"
+      }
+    },
+    {
+      "template_id": "meiren_kau",
+      "geo_type": "assembly",
+      "param_def": ["height"],
+      "geo_generator": {
+        "blender_bpy_template": "#美人靠装配集合",
+        "cad_script_template": "#美人靠二维轮廓"
+      }
+    },
+    {
+      "template_id": "dougong_assembly",
+      "geo_type": "assembly",
+      "param_def": [],
+      "geo_generator": {
+        "blender_bpy_template": "#斗拱组件装配",
+        "cad_script_template": "#斗拱剖面轮廓"
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "skill": "maodun-techuxing",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "Google和字节都是用OKR管理团队的，行业标杆都这么做，我们也应该引入OKR体系",
+      "expected_behavior": "应激活 maodun-techuxing, 并引导用户做三层追问：OKR的一般规律是什么、在我们公司的特殊条件下有什么不同、具体情境中有何更加特殊的因素",
+      "notes": "正面场景：照搬最佳实践，用户用'行业标杆''都这么做'来论证方法选择"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们之前用增长黑客的方法做用户增长很成功啊，怎么现在同样的方法效果差了这么多",
+      "expected_behavior": "应激活 maodun-techuxing, 并帮助用户分析环境变化导致方法论适用条件改变的问题",
+      "notes": "正面场景：过去经验失灵，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们对A客户和B客户用同一套销售方案，A客户很买单但B客户完全不感兴趣，为什么这个方法对A有效对B无效",
+      "expected_behavior": "应激活 maodun-techuxing, 并帮助用户分析两类客户的不同性质，找到需要不同方法的原因",
+      "notes": "正面场景：一刀切决策失效，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们的代码需要统一用ESLint做代码规范检查，大家现在风格不一致",
+      "expected_behavior": "不应激活本 skill, 因为代码规范是真正的通用问题，不需要做特殊性分析，直接用通用方案即可",
+      "notes": "诱饵：看起来是'方法论选择'，但代码规范是B段边界场景1提到的'真正的通用问题'"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们每次发版都用同样的CI/CD流程，已经跑得很顺畅了，继续沿用就好",
+      "expected_behavior": "不应激活本 skill, 因为这是已经验证过的重复场景，方法已被验证有效，不需要重新分析",
+      "notes": "诱饵：提到'方法论'和'沿用'，但B段明确说已验证过的重复场景不需重新分析"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "有管理顾问推荐我们用敏捷开发替代瀑布开发，但我们团队以前没试过，不知道适不适合",
+      "expected_behavior": "可以激活 maodun-techuxing 分析敏捷开发的前提条件是否与团队现状匹配，但也可以理解为一般的方法论选择问题，取决于是否有'照搬'的倾向",
+      "notes": "边界：外部顾问推荐方法论（场景5），但用户态度是'不确定'而非'照搬'，属于灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

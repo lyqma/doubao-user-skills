@@ -1,0 +1,9 @@
+{
+  "id": "corridor_3bay",
+  "name": "清式三间抄手游廊",
+  "category": "廊",
+  "subtype": "抄手游廊",
+  "bays_width": 3,
+  "bay_spacing": 3000,
+  "depth_bays": 1
+}

@@ -1,0 +1,51 @@
+{
+  "skill": "shishiqiushi-sigao",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "产品上线后收到了大量用户反馈，有骂的有夸的，情绪化抱怨和理性建议混在一起，反馈太多了看不过来，不知道哪些该听哪些不该听",
+      "expected_behavior": "应激活 shishiqiushi-sigao, 并引导用户用去粗取精、去伪存真、由此及彼、由表及里的四步法加工用户反馈",
+      "notes": "正面场景：用户反馈洪水，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "不同数据源给出矛盾信号——销售说市场很好但留存数据在下降，用户说满意但续费率在降，数据打架了不知道该信哪个",
+      "expected_behavior": "应激活 shishiqiushi-sigao, 并帮助用户用四步法清洗数据、建立跨维度关联、深入本质",
+      "notes": "正面场景：数据矛盾，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "总感觉汇报的东西不真实，数据好看但问题在暗处，下面的报告报喜不报忧",
+      "expected_behavior": "应激活 shishiqiushi-sigao, 并重点引导用户做'去伪存真'环节，识别美化过的数据",
+      "notes": "正面场景：汇报失真，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们上季度的财务报表已经整理好了，收入、成本、利润都算清楚了，就是想确认一下数据有没有算错",
+      "expected_behavior": "不应激活本 skill, 因为信息已经结构化清晰，只需简单核对，不需要四步法加工",
+      "notes": "诱饵：提到'数据'和'确认'，但信息已清晰，属于B段边界场景1"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们想给新产品做一个品牌视觉设计，需要决定用什么配色和字体",
+      "expected_behavior": "不应激活本 skill, 因为这是创造性工作，四步法会压制创造力，属于B段边界场景3",
+      "notes": "诱饵：看起来是'信息处理'但实际是创意设计，不适用四步法"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们有一份行业报告和几份竞品分析，信息量还行，但想再深挖一下有没有被忽略的趋势",
+      "expected_behavior": "可以激活 shishiqiushi-sigao 做轻量的'由此及彼、由表及里'分析，但信息量可能不足以支撑完整的四步法，也可能只是需要补充调研",
+      "notes": "边界：信息已有一定结构化，但用户想深挖，处于'需要加工'和'信息已经够用'的灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

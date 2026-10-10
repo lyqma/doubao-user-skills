@@ -1,0 +1,51 @@
+{
+  "skill": "qunzhong-luxian",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们的数据仪表盘显示各项指标都正常，DAU/MAU也在涨，但团队已经连续三周没有直接接触过真实用户了",
+      "expected_behavior": "应激活 qunzhong-luxian, 并提醒用户脱离一线的危险，建议建立持续的用户接触和反馈循环",
+      "notes": "正面场景：产品路线图脱离用户现实，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "用户反馈我们已经收集了，在Zendesk里堆了好几千条，但没人去整理分析",
+      "expected_behavior": "应激活 qunzhong-luxian, 并指出这是有收集无加工，建议建立定期的碎片加工提炼机制",
+      "notes": "正面场景：用户反馈堆在工单系统无人提炼，匹配A2段场景3"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我们按用户需求做了新功能，但上线后没人用，留存率还是低",
+      "expected_behavior": "应激活 qunzhong-luxian, 并指出缺乏验证环节——有'从群众中来'但没有'到群众中去'验证",
+      "notes": "正面场景：新产品上线后缺乏验证环节，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司现金流只够两个月了，必须马上做出是否裁员的决策",
+      "expected_behavior": "不应激活本 skill, 因为这是紧急危机决策，没有时间做多轮循环",
+      "notes": "诱饵：看起来需要'了解情况'，但属于紧急危机，群众路线是常规经营方法论"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们正在研发下一代AI芯片，这个领域用户自身的认知不足以提供有效反馈，需要靠专家判断",
+      "expected_behavior": "不应激活本 skill, 因为这是高度专业化领域，用户反馈不足以指导决策",
+      "notes": "诱饵：提到'反馈'和'研发'，但属于B段边界场景3——高度专业化领域"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们做了一次用户调研发现了一个新需求，准备据此开发新功能，但不确定这个需求是否足够普遍",
+      "expected_behavior": "可以激活 qunzhong-luxian 提醒一次调研不够，需要建立持续循环验证，但也可能只需要再做一轮调研确认，未必需要完整的群众路线循环",
+      "notes": "边界：有调研但不够深入，是一次性调研补充还是建立持续循环的灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

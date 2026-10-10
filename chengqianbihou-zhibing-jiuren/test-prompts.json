@@ -1,0 +1,51 @@
+{
+  "skill": "chengqianbihou-zhibing-jiuren",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "这次项目延期导致了客户流失，必须有人为此承担责任，该扣谁的绩效",
+      "expected_behavior": "应激活 chengqianbihou-zhibing-jiuren, 并引导用户从追责模式转为根因分析模式，追溯制度和流程层面的原因",
+      "notes": "正面场景：团队成员犯了导致重大损失的错误，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "复盘会就是走个形式，大家说两句好听的就散了，根本没人指出真正的问题在哪里",
+      "expected_behavior": "应激活 chengqianbihou-zhibing-jiuren, 并帮助用户重建'有证据的、聚焦原则问题的批评'文化",
+      "notes": "正面场景：复盘会变成甩锅会或走过场，匹配A2段场景3"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "新来的VP把之前的方案全否定了，说之前那套全是错的，原来的团队成员能力不行都换掉",
+      "expected_behavior": "应激活 chengqianbihou-zhibing-jiuren, 并指出这违反了'治病救人'原则——揭发错误的目的变成了整人而非救人",
+      "notes": "正面场景：空降高管全盘否定原有团队，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们发现有员工在窃取公司核心代码和客户数据，卖给竞争对手",
+      "expected_behavior": "不应激活本 skill, 因为这是恶意行为和道德违规，属于对抗性矛盾，需要直接法律手段处理",
+      "notes": "诱饵：看起来是'犯错后的处理'，但涉及欺诈和商业间谍，属于B段边界场景1"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "这个工程师连续三次上线都导致了P0级故障，给过改进计划但他拒绝执行",
+      "expected_behavior": "不应激活本 skill, 因为属于'重复犯同一错误且拒绝改进'，当事人已经'讳疾忌医'",
+      "notes": "诱饵：提到'犯错'和'改进'，但已多次尝试且被拒绝，不适用治病救人"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "团队里大家表面上都做得不错，有什么问题私下说，不愿意当面指出问题怕让人难堪",
+      "expected_behavior": "可以激活 chengqianbihou-zhibing-jiuren 帮助建立'不讲情面地揭发问题'的文化，但也可能更需要组织纠偏诊断模型来系统解决团队文化问题",
+      "notes": "边界：表面和谐但不指出问题，是自由主义倾向，两个skill都可适用"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

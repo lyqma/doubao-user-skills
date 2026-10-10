@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "古建筑参数化数据集 V4.12",
+  "description": "底层单位：毫米 mm，蛇形命名 snake_case，机器优先读取，description仅人阅读",
+  "type": "object",
+  "required": ["id", "name", "category", "unit_system", "modulus_rules", "components"],
+  "properties": {
+    "meta_version": {
+      "type": "object",
+      "properties": {
+        "version": {"type": "string"},
+        "author": {"type": "string"},
+        "last_modify": {"type": "string"},
+        "change_log": {"type": "array"},
+        "uid": {"type": "string"}
+      }
+    },
+    "id": {"type": "string"},
+    "name": {"type": "string"},
+    "category": {"type": "string"},
+    "subtype": {"type": "string"},
+    "dynasty_style": {"type": "string"},
+    "structure_type": {"type": "string"},
+    "mode_support": {"type": "array", "items": {"type": "string", "enum": ["quick_shell", "full_detail"]}},
+    "unit_system": {
+      "type": "object",
+      "properties": {
+        "base_system": {"type": "string", "const": "millimeter"},
+        "base_unit_name": {"type": "string", "const": "mm"},
+        "input_system": {"type": "string", "enum": ["meter", "qing_doukou", "song_caifen", "yingzaochi"]},
+        "base_input_value": {"type": "number"},
+        "convert_to_base": {"type": "boolean"}
+      }
+    },
+    "modulus_rules": {
+      "type": "object",
+      "properties": {
+        "variables": {"type": "object"},
+        "formulas": {"type": "object"},
+        "constraints": {"type": "object"},
+        "dependency_graph": {"type": "array"}
+      }
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variant_id": {"type": "string"},
+          "display_name": {"type": "string"},
+          "enable": {"type": "boolean"},
+          "components_activate": {"type": "array"},
+          "components_disable": {"type": "array"}
+        }
+      }
+    },
+    "conditional_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": {"type": "string"},
+          "action": {"type": "object"},
+          "else_action": {"type": "object"}
+        }
+      }
+    },
+    "fallback": {
+      "type": "object",
+      "properties": {
+        "enable": {"type": "boolean"},
+        "default_params": {"type": "object"},
+        "on_error_action": {"type": "string", "enum": ["use_fallback", "throw_error"]},
+        "error_msg": {"type": "string"}
+      }
+    },
+    "axis_defs": {"type": "array", "items": {"type": "object"}},
+    "cut_sections": {"type": "array", "items": {"type": "object"}},
+    "annotations": {"type": "array", "items": {"type": "object"}},
+    "annotate_unit_setting": {"type": "object"},
+    "export_settings": {"type": "object"},
+    "check_rules": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule_type": {"type": "string"},
+          "target": {"type": ["string", "array"]},
+          "tolerance": {"type": "number"},
+          "severity": {"type": "string", "enum": ["warning", "error"]},
+          "msg": {"type": "string"}
+        }
+      }
+    },
+    "assembly_instances": {"type": "array"},
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "component_id": {"type": "string"},
+          "ref_template": {"type": "string"},
+          "component_type": {"type": "string"},
+          "parent": {"type": "string"},
+          "placement": {
+            "type": "object",
+            "properties": {
+              "parent_ref": {"type": "string"},
+              "base_surface": {"type": "string", "enum": ["world_origin", "bottom_surface", "top_surface", "front_surface", "back_surface", "left_surface", "right_surface", "center_axis"]},
+              "origin_offset": {"type": "array", "items": {"type": "number"}},
+              "local_rotation": {"type": "array", "items": {"type": "number"}},
+              "rotation_order": {"type": "string"}
+            }
+          },
+          "count": {"type": ["integer", "null"]},
+          "params": {"type": "object"},
+          "arrange": {"type": ["object", "null"]},
+          "tolerance": {"type": ["object", "null"]},
+          "boolean_ops": {"type": ["array", "null"]},
+          "render_mapping": {
+            "type": "object",
+            "properties": {
+              "blender_collection": {"type": "string"},
+              "cad_layer": {"type": "string"},
+              "cad_color_index": {"type": "integer"},
+              "cad_linetype": {"type": "string"},
+              "viewport_color": {"type": "array", "items": {"type": "number"}}
+            }
+          },
+          "enable_quick": {"type": "boolean"},
+          "enable_detail": {"type": "boolean"}
+        }
+      }
+    }
+  }
+}

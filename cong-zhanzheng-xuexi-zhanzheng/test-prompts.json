@@ -1,0 +1,51 @@
+{
+  "skill": "cong-zhanzheng-xuexi-zhanzheng",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我还没研究透这个新行业，再等等看吧，先把行业报告看完再决定要不要进入",
+      "expected_behavior": "应激活 cong-zhanzheng-xuexi-zhanzheng, 并帮助用户设定最小启动条件，鼓励在行动中学习而非等准备好了再动手",
+      "notes": "正面场景：想进入新行业但纠结先做详尽调研，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "产品还有一个功能没做完，还有几个bug，用户体验还不够好，再优化一下再上线吧",
+      "expected_behavior": "应激活 cong-zhanzheng-xuexi-zhanzheng, 并帮助用户克服完美主义拖延，先上线MVP再在用户反馈中迭代",
+      "notes": "正面场景：产品上线纠结不够完美，匹配A2段场景3"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "我没做过管理，也没有带过团队，融资流程太复杂我不懂，我不是做销售的料",
+      "expected_behavior": "应激活 cong-zhanzheng-xuexi-zhanzheng, 并鼓励用户先干起来在实践中学——从'老百姓'到'军人'不是万里长城",
+      "notes": "正面场景：面对全新类型的挑战觉得自己不会，匹配A2段场景5"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们正在评估是否要签署一份排他性协议，一旦签了就不能反悔，需要仔细审查所有条款",
+      "expected_behavior": "不应激活本 skill, 因为这是高不可逆风险的决策，必须充分准备后再行动",
+      "notes": "诱饵：提到'犹豫'和'决策'，但属于B段边界场景1——不可逆决策必须充分准备"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们在做用户数据处理系统，涉及到GDPR合规问题，需要确保数据安全流程到位",
+      "expected_behavior": "不应激活本 skill, 因为涉及安全和合规问题，不能先干再说",
+      "notes": "诱饵：提到'流程'和'系统'，但属于B段边界场景2——涉及安全风险不能边干边学"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "团队需要新能力做AI产品，我们在纠结是先招一个AI工程师来带团队，还是让现有团队边学边做",
+      "expected_behavior": "可以激活 cong-zhanzheng-xuexi-zhanzheng 鼓励现有团队边学边做，但也可能是合理的人才策略选择——取决于AI能力的获取难度和团队的学习能力基线",
+      "notes": "边界：能力获取路径选择（干中学vs先招人），取决于现有团队是否有基本的学习能力基线"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

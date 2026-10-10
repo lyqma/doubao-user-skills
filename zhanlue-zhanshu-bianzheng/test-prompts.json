@@ -1,0 +1,51 @@
+{
+  "skill": "zhanlue-zhanshu-bianzheng",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "公司被迫缩减战线裁员了，团队士气很低落，大家都很消极，感觉在走下坡路",
+      "expected_behavior": "应激活 zhanlue-zhanshu-bianzheng, 并帮助用户在整体收缩中找到最有把握的局部突破口，打一场防御中的进攻战",
+      "notes": "正面场景：整体收缩但士气低迷，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "到处都在丢客户，对方全面碾压我们，每个产品线都被对手压制，全面被动",
+      "expected_behavior": "应激活 zhanlue-zhanshu-bianzheng, 并帮助用户在被动中锁定一个最有把握的微观突破口制造局部主动",
+      "notes": "正面场景：被巨头挤压全面被动，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "不反击就等死，反击怕死更快，资源有限不知道该不该硬拼一下",
+      "expected_behavior": "应激活 zhanlue-zhanshu-bianzheng, 并帮助用户理解'防御中的进攻'——不是全面反击而是在最有把握的点上局部出击",
+      "notes": "正面场景：资源劣势下的决策焦虑，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们上个季度市场份额又增长了5个点，远超竞品，团队状态很好",
+      "expected_behavior": "不应激活本 skill, 因为已有整体优势，应乘胜追击而非'防御中的进攻'",
+      "notes": "诱饵：提到'竞争'和'战略'，但自身已占优，不需要被动中找主动"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们公司现金流只够撑一个月了，账上没钱了，该怎么办",
+      "expected_behavior": "不应激活本 skill, 因为这是紧急危机，需要紧急求生而非辩证法思考",
+      "notes": "诱饵：看起来'被动'，但属于紧急危机，不是战略层面的攻守转换"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们在大部分市场处于守势，但在一个二线城市的市场做得还不错，不确定要不要加大投入把那边做大",
+      "expected_behavior": "可以激活 zhanlue-zhanshu-bianzheng 帮助分析是否该在局部优势点加大投入作为防御中的进攻，但也可以理解为进一步巩固优势的正常决策",
+      "notes": "边界：整体被动但局部有亮点，是否属于'防御中的进攻'取决于整体态势的判断"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

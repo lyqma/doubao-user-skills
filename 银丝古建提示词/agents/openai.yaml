@@ -1,0 +1,7 @@
+interface:
+  display_name: "银丝古建提示词"
+  short_description: "生成不锈钢银丝古建电影级图片提示词"
+  default_prompt: "帮我生成一个银丝古建的图片提示词，场景是：[描述场景]"
+
+policy:
+  allow_implicit_invocation: true

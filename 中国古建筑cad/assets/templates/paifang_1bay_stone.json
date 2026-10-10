@@ -1,0 +1,12 @@
+{
+  "id": "paifang_1bay_stone",
+  "name": "清式单间石牌坊",
+  "category": "坊",
+  "subtype": "单间石牌楼",
+  "W": 3600,
+  "bays": 1,
+  "depth": 1800,
+  "column_style": "straight",
+  "roof_type": "xieshan",
+  "material": "stone"
+}

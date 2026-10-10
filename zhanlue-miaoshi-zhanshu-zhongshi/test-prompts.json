@@ -1,0 +1,51 @@
+{
+  "skill": "zhanlue-miaoshi-zhanshu-zhongshi",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "连续三个季度业绩下滑了，感觉看不到希望，团队开始怀疑还能不能坚持下去，我们是不是不行了",
+      "expected_behavior": "应激活 zhanlue-miaoshi-zhanshu-zhongshi, 并帮助用户用结构性分析重建战略信心，同时制定战术风险清单",
+      "notes": "正面场景：困难面前丧失信心，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "刚拿到B轮融资，我们势不可挡，赶紧扩张，对手不算什么，要大干一场",
+      "expected_behavior": "应激活 zhanlue-miaoshi-zhanshu-zhongshi, 并警示过度膨胀的危险，补充战术层面的风险审视",
+      "notes": "正面场景：顺利时过度膨胀，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队意见分裂了，乐观派说没问题我们肯定能赢，悲观派说肯定不行，各说各的",
+      "expected_behavior": "应激活 zhanlue-miaoshi-zhanshu-zhongshi, 并帮助团队统一到'战略上有信心+战术上够谨慎'的健康状态",
+      "notes": "正面场景：团队心态分裂，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们的后端API响应速度突然变慢了，从200ms涨到了2秒，需要排查性能瓶颈",
+      "expected_behavior": "不应激活本 skill, 因为这是技术/执行问题而非心态问题",
+      "notes": "诱饵：提到'瓶颈'和'问题'，但属于纯技术层面，心态框架无效"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "团队心态挺健康的，就是产品方案需要调整，用户留存数据不太好",
+      "expected_behavior": "不应激活本 skill, 因为团队心态健康，问题在产品方案层面",
+      "notes": "诱饵：提到'留存不好'，但心态不是问题，应该用其他skill处理产品问题"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们市场判断是长期向好的，但最近几个月数据确实在跌，团队有些人开始怀疑这个判断是不是错的",
+      "expected_behavior": "可以激活 zhanlue-miaoshi-zhanshu-zhongshi 帮助区分'战略信心是否建立在分析之上'还是'自欺'，但也可能需要先用实事求是方法验证市场判断是否正确",
+      "notes": "边界：战略信心可能建立在错误判断上（B段场景3），是心态问题还是判断问题不明确"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

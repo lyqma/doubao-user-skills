@@ -1,0 +1,51 @@
+{
+  "skill": "tan-gangqin",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "产品发布、融资谈判、核心员工离职，哪个都不能放下，我现在每天被三件事撕扯",
+      "expected_behavior": "应激活 tan-gangqin, 并帮助用户确定当前唯一的中心工作，其他工作设定最低维持节奏",
+      "notes": "正面场景：CEO同时面临多件紧急大事，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们OKR里有8个目标，每个都是P0，这些都很重要都要做，我不接受哪个不做",
+      "expected_behavior": "应激活 tan-gangqin, 并强制用户选出唯一中心工作，给其他目标降级设定维持节奏",
+      "notes": "正面场景：团队所有目标都是P0，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "技术债先不管了，团队建设等忙完这阵再说，合规的事以后再搞",
+      "expected_behavior": "应激活 tan-gangqin, 并指出'有的指头不动'的危险，建议为被忽视的工作设定最低维持动作",
+      "notes": "正面场景：某项重要工作长期被忽视，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司账上只剩一个月现金流了，必须立刻想办法活下去",
+      "expected_behavior": "不应激活本 skill, 因为这是生存危机，需要单指猛击一个键——集中全部资源求生",
+      "notes": "诱饵：提到'多问题'和'决策'，但属于B段边界场景1——生死存亡时刻不是弹钢琴"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们是一个两个人的创业团队，在做一个SaaS产品，感觉事情挺多的",
+      "expected_behavior": "不应激活本 skill, 因为团队太小，没有'十个指头'需要协调",
+      "notes": "诱饵：提到'事情多'，但属于B段边界场景2——极早期创业没有多指头协调的需求"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们这个季度中心工作完成了，但下个季度还没确定新的重点，团队突然闲下来有点迷茫",
+      "expected_behavior": "可以激活 tan-gangqin 帮助用户切换到新的中心工作和节奏，但这也可能是正常的季度规划流程，未必需要弹钢琴框架",
+      "notes": "边界：中心工作完成后的切换，匹配A2段场景4，但也是常规管理行为"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

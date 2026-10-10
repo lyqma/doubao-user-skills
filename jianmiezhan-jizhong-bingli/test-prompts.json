@@ -1,0 +1,51 @@
+{
+  "skill": "jianmiezhan-jizhong-bingli",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "5个好客户同时来了，我们团队只有10个人，根本追不过来，追哪个好",
+      "expected_behavior": "应激活 jianmiezhan-jizhong-bingli, 并引导用户评估每个客户的战略价值和胜算，集中资源先拿下最有把握的一个",
+      "notes": "正面场景：多机会并发无法取舍，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "我们什么都做了但什么都不精，每个方向投入都不够，感觉在全面平庸",
+      "expected_behavior": "应激活 jianmiezhan-jizhong-bingli, 并帮助用户识别主攻方向，集中资源在一个方向形成绝对优势",
+      "notes": "正面场景：资源分散全线平庸，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "这个客户也不能丢那个也不能放，放弃任何一个都觉得可惜，虽然理性上知道该聚焦但就是下不了决心",
+      "expected_behavior": "应激活 jianmiezhan-jizhong-bingli, 并帮助用户克服惧怕放弃的心理障碍，用歼灭战逻辑做取舍",
+      "notes": "正面场景：惧怕放弃的心理障碍，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们刚拿到一笔大融资，资金充足，打算同时在三个市场布局",
+      "expected_behavior": "不应激活本 skill, 因为资源充裕可以多线并进，不存在取舍问题",
+      "notes": "诱饵：提到'多方向'和'布局'，但资源充裕，属于B段边界场景的排除条件"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们的产品方向已经确定了，现在需要把开发流程优化一下，提高交付效率",
+      "expected_behavior": "不应激活本 skill, 因为已经确定了主攻方向只需执行，不存在取舍和集中的问题",
+      "notes": "诱饵：提到'效率'和'方向'，但问题在执行层面而非资源取舍层面"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们在探索新产品方向，有两个方向都挺有前景的，但都不确定能不能做成，不知道该all in哪个",
+      "expected_behavior": "可以激活 jianmiezhan-jizhong-bingli 但需要先提醒探索期不宜过早集中，也可能应先用小股兵力试错验证后再集中，属于B段边界场景1",
+      "notes": "边界：探索期不确定性极高，过早集中是赌博，但又确实需要取舍，处于'集中'和'试错'的灰色地带"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

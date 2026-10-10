@@ -1,0 +1,13 @@
+{
+  "id": "paifang_5bay_stone",
+  "name": "清式五间石牌坊",
+  "category": "坊",
+  "subtype": "五间石牌楼",
+  "W": 24000,
+  "bays": 5,
+  "bay_spacing": [4800, 4800, 4800, 4800, 4800],
+  "depth": 2800,
+  "column_style": "straight",
+  "roof_type": "xieshan",
+  "material": "stone"
+}

@@ -1,0 +1,51 @@
+{
+  "skill": "zuzhi-jiupian-zhenduan",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "感觉最近效率变低了，大家都在忙但产出不多，不知道问题出在哪，没人说得出具体哪里出了问题",
+      "expected_behavior": "应激活 zuzhi-jiupian-zhenduan, 并引导用户从笼统的'效率低'开始精确列举症状，形成具体行为描述的症状清单",
+      "notes": "正面场景：团队执行力持续下降但说不清具体问题，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "大家都说好但没人真做，会议上没人反对会后私下抱怨，多一事不如少一事",
+      "expected_behavior": "应激活 zuzhi-jiupian-zhenduan, 并精确列举'老好人'文化的具体症状，追溯到制度性根源，开出针对性处方",
+      "notes": "正面场景：公司文化变味老好人蔓延，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "新人不认同我们的价值观，已经不是原来那个团队了，老员工开始怀念创业初期",
+      "expected_behavior": "应激活 zuzhi-jiupian-zhenduan, 并帮助用户系统诊断文化稀释的具体表现、人员构成根源和制度性根源",
+      "notes": "正面场景：公司快速发展后早期文化被稀释，匹配A2段场景5"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "公司账上没钱了，核心客户也在流失，需要马上采取行动",
+      "expected_behavior": "不应激活本 skill, 因为这是紧急危机，需要快速决策行动而非系统诊断——诊断模型适用于慢性病而非急性病",
+      "notes": "诱饵：提到'问题'和'客户流失'，但属于B段边界场景1——紧急危机"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们是一个四个人的创业团队，最近感觉合作不太顺畅",
+      "expected_behavior": "不应激活本 skill, 因为组织太小（小于5人），问题通常是显而易见的，不需要系统诊断",
+      "notes": "诱饵：提到'团队问题'和'诊断需求'，但属于B段边界场景2——组织太小"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们推了OKR但变成填表了，制度发了但没人遵守，新流程反而更慢了",
+      "expected_behavior": "可以激活 zuzhi-jiupian-zhenduan 诊断制度失效的根源（可能是激励错位），也可以用一般号召与个别指导skill分析推行方法问题",
+      "notes": "边界：新制度推行效果不好，可能是制度本身的根源问题（本skill），也可能是推行方法问题（个别指导skill）"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

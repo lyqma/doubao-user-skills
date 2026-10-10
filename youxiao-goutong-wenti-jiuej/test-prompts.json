@@ -1,0 +1,51 @@
+{
+  "skill": "youxiao-goutong-wenti-jiuej",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "技术团队做融资路演，投资人听不懂我们在做什么，技术太复杂了解释不清楚，PPT做了60页但还是没讲透",
+      "expected_behavior": "应激活 youxiao-goutong-wenti-jiuej, 并用反八股清单诊断表达问题，用四步法重构路演内容",
+      "notes": "正面场景：技术团队路演投资人听不懂，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "需求文档改了三版了还是不满意，他们总是理解错我的意思，跨部门协作太痛苦了",
+      "expected_behavior": "应激活 youxiao-goutong-wenti-jiuej, 并帮助用户诊断沟通中的'无的放矢'问题——没有针对受众调整语言",
+      "notes": "正面场景：跨部门协作需求反复被误解，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "战略报告数据都列上了该说的都说了，领导说看完了还是不知道重点在哪",
+      "expected_behavior": "应激活 youxiao-goutong-wenti-jiuej, 并用反八股清单诊断报告中的'开中药铺'问题——罗列数据但没有因果分析",
+      "notes": "正面场景：战略汇报越写越长但没人说出核心结论，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们在和另一家公司谈并购，需要对外发布一份声明，措辞要非常谨慎留有回旋余地",
+      "expected_behavior": "不应激活本 skill, 因为需要刻意的模糊和留白，'说得清楚'不总是优点",
+      "notes": "诱饵：提到'沟通'和'表达'，但属于B段边界场景1——需要模糊性的外交场景"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们在做一个头脑风暴，想给新产品起个有创意的名字",
+      "expected_behavior": "不应激活本 skill, 因为这是创意发散阶段，过早结构化会扼杀创意",
+      "notes": "诱饵：提到'创意'和'命名'，但属于B段边界场景2——创意发散阶段"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "产品功能比竞品多很多但用户不买账，用户说看不出和上一版有什么区别，我们做了50项改进",
+      "expected_behavior": "可以激活 youxiao-goutong-wenti-jiuej 帮助诊断营销表达问题——罗列功能但不打动用户，但也可能是产品定位或价值主张的根本问题",
+      "notes": "边界：产品发布表达不打动用户（A2场景4），可能是表达问题也可能是产品本身价值不足"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

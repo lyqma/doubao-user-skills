@@ -1,0 +1,9 @@
+{
+  "id": "hall_wudian_5bay",
+  "name": "清式单檐庑殿殿 面阔五间",
+  "category": "殿",
+  "subtype": "单檐庑殿",
+  "bays_width": 5,
+  "bay_spacing": 3600,
+  "depth_bays": 3
+}

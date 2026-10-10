@@ -1,0 +1,51 @@
+{
+  "skill": "lianglei-maodun",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "我们两个合伙人根本说不到一起去，他要做ToC我要做ToB，方向完全不同，不知道还能不能一起干",
+      "expected_behavior": "应激活 lianglei-maodun, 并帮助用户先做冲突定性——判断是对抗性还是非对抗性矛盾",
+      "notes": "正面场景：合伙人之间出现严重分歧，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "他们两个又在吵架了，团队氛围很差，某人总是不配合，不知道该怎么处理",
+      "expected_behavior": "应激活 lianglei-maodun, 并引导判断冲突性质——大多数团队冲突是非对抗性的，用'团结-批评-团结'公式",
+      "notes": "正面场景：团队成员之间发生冲突，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "公司内部在吵到底做ToB还是ToC、烧钱增长还是追求盈利，形成两个阵营，谁也说服不了谁",
+      "expected_behavior": "应激活 lianglei-maodun, 并指出这是典型的非对抗性矛盾——路线之争，切忌上升为站队",
+      "notes": "正面场景：公司内部的路线之争，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "有个工程师连续三个sprint的产出都不达标，技术能力也跟不上团队节奏",
+      "expected_behavior": "不应激活本 skill, 因为这是纯粹的绩效问题，用绩效管理流程而非两类矛盾框架",
+      "notes": "诱饵：提到'不达标'和'跟不上'，但属于B段边界场景2——纯绩效问题不是矛盾"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们有个大客户对产品不满意，说要取消合同，需要赶紧处理",
+      "expected_behavior": "不应激活本 skill, 因为这是客户投诉，正常的商业摩擦，用客户成功流程处理",
+      "notes": "诱饵：提到'冲突'和'对立'，但属于B段边界场景3——客户投诉"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "投资方提出了一系列新条款要求，有些明显对我们不利，但又不想破坏合作关系",
+      "expected_behavior": "可以激活 lianglei-maodun 帮助分析这是利益博弈（非对抗性）还是恶意条款（对抗性），但也可能更适合统一战线独立自主skill来处理合作博弈",
+      "notes": "边界：投资方利益冲突，可以是两类矛盾定性问题，也可以是统一战线中的独立自主问题"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

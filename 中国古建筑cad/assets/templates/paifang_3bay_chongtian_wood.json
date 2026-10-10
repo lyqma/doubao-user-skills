@@ -1,0 +1,14 @@
+{
+  "id": "paifang_3bay_chongtian_wood",
+  "name": "清式四柱三间冲天木牌楼",
+  "category": "坊",
+  "subtype": "四柱三间冲天式木牌楼",
+  "W": 12000,
+  "bays": 3,
+  "bay_spacing": [4000, 4000, 4000],
+  "depth": 2400,
+  "column_style": "chongtian",
+  "roof_type": "xieshan",
+  "material": "wood",
+  "double_eave": false
+}

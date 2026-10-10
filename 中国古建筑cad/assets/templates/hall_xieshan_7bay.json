@@ -1,0 +1,9 @@
+{
+  "id": "hall_xieshan_7bay",
+  "name": "清式单檐歇山殿 面阔七间",
+  "category": "殿",
+  "subtype": "单檐歇山",
+  "bays_width": 7,
+  "bay_spacing": 3600,
+  "depth_bays": 5
+}

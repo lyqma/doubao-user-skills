@@ -1,0 +1,51 @@
+{
+  "skill": "zhudongxing-linghuoxing-jihuaxing",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "目标没问题就是执行不下去，每个季度OKR都完不成，每个季度都差那么一点",
+      "expected_behavior": "应激活 zhudongxing-linghuoxing-jihuaxing, 并帮助用户用三要素框架诊断主动性、灵活性、计划性哪个最弱",
+      "notes": "正面场景：OKR/目标总是完不成，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "计划做了也白做，每次刚做完计划市场就变了，干脆不做计划了",
+      "expected_behavior": "应激活 zhudongxing-linghuoxing-jihuaxing, 并帮助用户理解'有计划的灵活'——计划性提供框架，灵活性在框架内运作",
+      "notes": "正面场景：计划赶不上变化，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "团队推一下动一下，没人主动思考，只会执行不会发现问题，所有人都在等我安排",
+      "expected_behavior": "应激活 zhudongxing-linghuoxing-jihuaxing, 并帮助用户诊断主动性缺失问题，建立激发主动性的机制",
+      "notes": "正面场景：团队被动等指令，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们的战略方向可能选错了，做了半年产品没有用户愿意付费",
+      "expected_behavior": "不应激活本 skill, 因为问题在战略层面而非执行层面，先要解决方向问题",
+      "notes": "诱饵：提到'做了没用'，但属于战略方向错误而非执行力问题"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们是一个两个人的独立开发者团队，想提高一下开发效率",
+      "expected_behavior": "不应激活本 skill, 因为团队极小（1-3人），执行力问题通常是个人问题而非系统性问题",
+      "notes": "诱饵：提到'效率'和'执行'，但B段边界场景2明确说极小团队此框架过重"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们是一个8人的创业团队，最近加了两个新成员，团队节奏有点乱，有时候太随意有时候太死板",
+      "expected_behavior": "可以激活 zhudongxing-linghuoxing-jihuaxing 帮助诊断新成员加入后的三要素失衡，但8人团队也可能只需要简单的流程调整而非系统性框架",
+      "notes": "边界：小团队但大于3人，执行力问题可能是人员磨合而非系统性失衡"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

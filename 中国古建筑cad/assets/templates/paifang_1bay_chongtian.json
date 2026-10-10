@@ -1,0 +1,12 @@
+{
+  "id": "paifang_1bay_chongtian",
+  "name": "清式单间冲天石牌坊",
+  "category": "坊",
+  "subtype": "单间冲天石牌楼",
+  "W": 3600,
+  "bays": 1,
+  "depth": 1800,
+  "column_style": "chongtian",
+  "roof_type": "xieshan",
+  "material": "stone"
+}

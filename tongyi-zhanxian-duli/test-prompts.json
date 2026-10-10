@@ -1,0 +1,51 @@
+{
+  "skill": "tongyi-zhanxian-duli",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "拿到大公司的战略投资了，但他们要求独家合作权和排他条款，说这只是走个形式",
+      "expected_behavior": "应激活 tongyi-zhanxian-duli, 并帮助用户列出独立底线清单，评估排他条款是否属于核心自主权",
+      "notes": "正面场景：拿到大公司战略投资但附带排他条款，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "这个客户太重要了不能不答应，他们要求我们改架构做定制化开发，但会偏离产品主线",
+      "expected_behavior": "应激活 tongyi-zhanxian-duli, 并帮助用户区分主动让步和被动退让，评估定制化是否会损害核心产品战略",
+      "notes": "正面场景：大客户要求定制化偏离主线，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "平台说数据共享是合作的前提，不给数据就不给流量，他们要接入我们的数据接口",
+      "expected_behavior": "应激活 tongyi-zhanxian-duli, 并帮助用户界定数据资产的底线，评估让步的交换条件和退出机制",
+      "notes": "正面场景：平台合作要求数据共享，匹配A2段场景3"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们刚成立三个月，连PMF都没验证，现在有个大客户愿意合作但条件比较苛刻",
+      "expected_behavior": "不应激活本 skill, 因为处于早期生存阶段，过度强调独立自主可能错失关键生存机会",
+      "notes": "诱饵：提到'合作条件'和'自主权'，但属于B段边界场景2——早期生存阶段应先活下来"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们的一个大客户提出了一些新功能需求，需要调整产品优先级",
+      "expected_behavior": "不应激活本 skill, 因为客户就是你的客户而非'统一战线伙伴'，让步应该用商业逻辑判断",
+      "notes": "诱饵：提到'客户要求'和'调整'，但属于B段边界场景3——客户不是统一战线伙伴"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "我们加入了一个行业联盟，他们要求统一技术路线，我们自研的方案可能要放弃，但联盟带来大量客户资源",
+      "expected_behavior": "可以激活 tongyi-zhanxian-duli 帮助评估技术自主权与客户资源的取舍，但也可能只是正常的商业决策——看技术自主权是否属于核心底线",
+      "notes": "边界：行业联盟的统一技术要求，匹配A2段场景4，但可能技术路线不是核心自主权"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}

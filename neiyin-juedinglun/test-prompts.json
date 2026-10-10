@@ -1,0 +1,51 @@
+{
+  "skill": "neiyin-juedinglun",
+  "version": "0.1.0",
+  "source_book": "《毛泽东选集第1-5卷》 毛泽东",
+  "darwin_compatible": true,
+  "test_cases": [
+    {
+      "id": "should-trigger-01",
+      "type": "should_trigger",
+      "prompt": "大环境不好，行业寒冬，现在谁都不好过，等市场回暖就好了",
+      "expected_behavior": "应激活 neiyin-juedinglun, 并帮助用户用鸡蛋石头测试翻转归因——同样的市场下有没有人做得比我们好",
+      "notes": "正面场景：业绩下滑归因于市场环境，匹配A2段场景1"
+    },
+    {
+      "id": "should-trigger-02",
+      "type": "should_trigger",
+      "prompt": "创业失败了，如果早两年做就好了，正好赶上政策变了投资人看不懂我们",
+      "expected_behavior": "应激活 neiyin-juedinglun, 并帮助用户从外因归因转向内因审视——是时机问题还是自身能力不足",
+      "notes": "正面场景：创业失败归因于运气和时机，匹配A2段场景2"
+    },
+    {
+      "id": "should-trigger-03",
+      "type": "should_trigger",
+      "prompt": "大公司一进场我们就没戏了，他们有流量优势，不公平竞争，巨头抄了我们",
+      "expected_behavior": "应激活 neiyin-juedinglun, 并帮助用户从抱怨外因转向审视内因——自身是否具备竞争的内在根据",
+      "notes": "正面场景：产品失败归因于竞品太强，匹配A2段场景4"
+    },
+    {
+      "id": "should-not-trigger-01",
+      "type": "should_not_trigger",
+      "prompt": "我们做K12在线教育，双减政策出来后整个行业被叫停了，需要转型",
+      "expected_behavior": "不应激活本 skill, 因为这是真正的系统性风险——行业被政策禁止，内因再强也无济于事",
+      "notes": "诱饵：提到'失败'和'归因'，但属于B段边界场景1——行业被政策禁止是真正的外部结构性巨变"
+    },
+    {
+      "id": "should-not-trigger-02",
+      "type": "should_not_trigger",
+      "prompt": "我们公司刚成立一个月，只有两个人和一台笔记本，需要先找种子轮融资活下去",
+      "expected_behavior": "不应激活本 skill, 因为资源极度匮乏的早期阶段，需要先争取外部资源（融资），'先看内因'不切实际",
+      "notes": "诱饵：提到'需要'和'自身'，但属于B段边界场景2——资源极度匮乏的早期"
+    },
+    {
+      "id": "edge-01",
+      "type": "edge_case",
+      "prompt": "现在招人太难了，薪资没有竞争力，年轻人都不愿意去创业公司",
+      "expected_behavior": "可以激活 neiyin-juedinglun 帮助翻转归因——先看公司是否值得好人才来，但也可能确实是客观的薪资劣势，需要两手分析",
+      "notes": "边界：招聘困难可能确实是外因（薪资无竞争力），但也可能部分是内因（公司吸引力不足），需要平衡分析"
+    }
+  ],
+  "minimum_pass_rate": 0.8
+}
